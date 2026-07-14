@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mugdha ❤️</title>
+    <meta name="description" content="A romantic birthday countdown for Mugdha - 26th July 2026">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --pink-soft: #fce4ec;
+            --pink-medium: #f8b4c8;
+            --pink-dark: #e91e63;
+            --lavender: #e8d5f5;
+            --lavender-medium: #d4a5e0;
+            --rose-gold: #f7c5c0;
+            --glass-bg: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 40%, #fce4ec 100%);
+            min-height: 100vh;
+            color: #4a2c3a;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(233, 30, 99, 0.15);
+        }
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .floating-heart {
+            position: absolute;
+            font-size: 1.2rem;
+            animation: floatUp linear infinite;
+            opacity: 0.3;
+            color: var(--pink-medium);
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+        /* Confetti */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 9999;
+            animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+        /* Hero overlay */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(252, 228, 236, 0.7), rgba(232, 213, 245, 0.7), rgba(252, 228, 236, 0.7));
+        }
+        /* Countdown numbers */
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            min-width: 80px;
+            text-align: center;
+        }
+        @media (min-width: 640px) {
+            .countdown-number {
+                min-width: 100px;
+                padding: 1rem 1.5rem;
+            }
+        }
+        /* Polaroid */
+        .polaroid {
+            background: white;
+            padding: 0.75rem 0.75rem 2.5rem 0.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            transform: rotate(var(--rot, -2deg));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .polaroid:nth-child(even) {
+            --rot: 2deg;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 0 8px 40px rgba(233,30,99,0.15);
+        }
+        /* Love note animation */
+        .love-note {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .love-note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Celebration mode pulse */
+        .celebration-glow {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(233,30,99,0.2); }
+            50% { box-shadow: 0 0 60px rgba(233,30,99,0.5); }
+        }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fce4ec; }
+        ::-webkit-scrollbar-thumb { background: #f8b4c8; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<!-- Floating Hearts Background -->
+<div class="floating-hearts" id="heartsContainer"></div>
+
+<!-- Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 glass">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#" class="text-xl font-semibold text-pink-700" style="font-family:'Playfair Display',serif;">
+            <i class="fas fa-heart text-pink-500 mr-2"></i>Mugdha
+        </a>
+        <ul class="hidden md:flex gap-6 text-sm font-medium text-pink-800/80" id="navList"></ul>
+        <button id="mobileMenuBtn" class="md:hidden text-pink-700 text-xl" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4">
+        <ul id="mobileNavList" class="flex flex-col gap-2 text-sm font-medium text-pink-800/80"></ul>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO COUNTDOWN -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div class="glass-card p-8 md:p-16 inline-block w-full">
+                <p class="text-pink-600 font-medium text-lg md:text-xl mb-2">Counting down to</p>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-pink-800 mb-2">Mugdha's Birthday</h1>
+                <p class="text-pink-500 text-lg md:text-xl mb-8">26 July 2026</p>
+                <div id="countdown" class="flex flex-wrap justify-center gap-3 md:gap-5 mb-8">
+                    <div class="countdown-number"><div id="days" class="text-3xl md:text-5xl font-bold text-pink-700">00</div><div class="text-xs md:text-sm text-pink-500 mt-1 uppercase tracking-wider">Days</div></div>
+                    <div class="countdown-number"><div id="hours" class="text-3xl md:text-5xl font-bold text-pink-700">00</div><div class="text-xs md:text-sm text-pink-500 mt-1 uppercase tracking-wider">Hours</div></div>
+                    <div class="countdown-number"><div id="minutes" class="text-3xl md:text-5xl font-bold text-pink-700">00</div><div class="text-xs md:text-sm text-pink-500 mt-1 uppercase tracking-wider">Minutes</div></div>
+                    <div class="countdown-number"><div id="seconds" class="text-3xl md:text-5xl font-bold text-pink-700">00</div><div class="text-xs md:text-sm text-pink-500 mt-1 uppercase tracking-wider">Seconds</div></div>
+                </div>
+                <p class="text-pink-600/80 italic text-sm md:text-base">"Every second brings me closer to celebrating you, Mugdha ❤️"</p>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-pink-400 text-2xl">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- REASONS WHY I LOVE YOU -->
+    <section id="reasons" class="py-20 px-4 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-pink-800 mb-4">Reasons Why I Love You</h2>
+            <p class="text-center text-pink-500 mb-12 max-w-lg mx-auto">Each reason is a little piece of my heart, Mugdha.</p>
+            <div id="reasonsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY POLAROID -->
+    <section id="gallery" class="py-20 px-4 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-pink-800 mb-4">Our Moments</h2>
+            <p class="text-center text-pink-500 mb-12 max-w-lg mx-auto">Captured memories that I cherish forever.</p>
+            <div id="polaroidGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- SPOTIFY PLAYLIST -->
+    <section id="playlist" class="py-20 px-4 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-pink-800 mb-4">Our Playlist</h2>
+            <p class="text-pink-500 mb-8">Songs that remind me of you, Mugdha.</p>
+            <div class="glass-card p-6 md:p-10 max-w-lg mx-auto">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <i class="fab fa-spotify text-5xl text-green-500"></i>
+                    <span class="text-2xl font-semibold text-pink-700">For Mugdha</span>
+                </div>
+                <div id="playlistTracks" class="space-y-3 text-left"></div>
+                <a href="https://open.spotify.com/playlist/36AtEP0Wszs3zUnQXT1Pc6?si=jisDh7lgQ2eMFXze6s-wLQ&utm_source=copy-link&pi=LqoiYHNeSj2j6" id="spotifyOpenBtn" class="inline-block mt-6 px-8 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition shadow-lg">
+                    <i class="fab fa-spotify mr-2"></i>Open on Spotify
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING LOVE NOTES -->
+    <section id="notes" class="py-20 px-4 relative">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-pink-800 mb-4">Love Notes</h2>
+            <p class="text-center text-pink-500 mb-12">Little whispers from my heart to yours.</p>
+            <div id="notesContainer" class="space-y-6"></div>
+        </div>
+    </section>
+
+    <!-- CELEBRATION SECTION (hidden until countdown zero) -->
+    <section id="celebration" class="py-20 px-4 relative hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="glass-card p-10 celebration-glow">
+                <i class="fas fa-birthday-cake text-6xl text-pink-600 mb-4"></i>
+                <h2 class="text-4xl md:text-6xl font-bold text-pink-800 mb-4">Happy Birthday, Mugdha! 🎉</h2>
+                <p class="text-xl text-pink-600 mb-6">The wait is over. Today is all about YOU, my love.</p>
+                <button id="confettiBtn" class="px-8 py-4 bg-pink-600 text-white rounded-full text-lg font-semibold hover:bg-pink-700 transition shadow-xl">
+                    <i class="fas fa-sparkles mr-2"></i>Celebrate with Confetti!
+                </button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="glass py-8 text-center text-pink-600/70 text-sm">
+    <p class="mb-1">Made with infinite love for Mugdha ❤️</p>
+    <p>Every day with you is a gift.</p>
+</footer>
+
+<script>
+// ─── DATA LAYER ───
+
+const navItems = [
+    { label: "Home", href: "#hero" },
+    { label: "Reasons", href: "#reasons" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Playlist", href: "#playlist" },
+    { label: "Notes", href: "#notes" }
+];
+
+const reasons = [
+    { icon: "fa-solid fa-face-smile", title: "Your Smile", desc: "It lights up my entire world, every single time." },
+    { icon: "fa-solid fa-heart", title: "Your Kindness", desc: "You have the purest heart I've ever known." },
+    { icon: "fa-solid fa-brain", title: "Your Intelligence", desc: "You inspire me with your brilliance and wit." },
+    { icon: "fa-solid fa-hand-holding-heart", title: "Your Warmth", desc: "Being with you feels like home." },
+    { icon: "fa-solid fa-laugh", title: "Your Laughter", desc: "The most beautiful melody I've ever heard." },
+    { icon: "fa-solid fa-star", title: "You Being You", desc: "Every little thing about you is perfect, Mugdha." },
+    { icon: "fa-solid fa-moon", title: "Your Dreams", desc: "I love dreaming our future together." },
+    { icon: "fa-solid fa-feather", title: "Your Grace", desc: "You move through life with such elegance." },
+    { icon: "fa-solid fa-infinity", title: "Our Love", desc: "It grows stronger every day, forever and always." }
+];
+
+const galleryImages = [
+    { src: "images/pic1.jpg", alt: "A smile to die for" },
+    { src: "images/pic5.jpg", alt: "A lovely moment together" },
+    { src: "images/pic2.jpg", alt: "Looking drop dead gorgeous" },
+    { src: "images/pic6.jpg", alt: "Our special memory" },
+    { src: "images/pic7.jpg", alt: "Mugdha being adorable" },
+    { src: "images/pic3.jpg", alt: "Sunkissed Mugdha" },
+    { src: "images/pic4.jpg", alt: "Baddie Mugdha" },
+    { src: "images/pic9.jpg", alt: "A perfect day with youuu" }
+];
+
+const playlistTracks = [
+    { title: "Khat", artist: "Navjot Ahuja ", duration: "4:56" },
+    { title: "Kadhi Tu", artist: "Hrishikesh Ranade", duration: "5;38" },
+    { title: "Jugraafiya", artist: "Udit Narayan", duration: "4:34" },
+    { title: "Tere Naina", artist: "Shankar Mahadevan", duration: "4:15" },
+    { title: "Tumhe jo maine dekha", artist: "Abhijeet", duration: "4:22" },
+    { title: "Ek din aap ", artist: "Alka Yagnik", duration: "4:45" },
+    { title: "Just the two of US", artist: "Grover Washington", duration: "4:30" },
+    { title: "Sukh Kalele", artist: "Shreya Ghoshal", duration: "5:39" }
+];
+
+const loveNotes = [
+    { text: "You are the most beautiful soul I've ever met, Mugdha.", author: "Your love" },
+    { text: "Every moment with you feels like a dream I never want to wake up from.", author: "Always yours" },
+    { text: "You make my world brighter just by being in it.", author: "Forever blessed" },
+    { text: "I fall in love with you a little more every single day.", author: "Your Aduu" },
+    { text: "You are my today and all of my tomorrows.", author: "Eternally grateful" },
+    { text: "The best thing that ever happened to me is you, Mugdha.", author: "Your dumbass" }
+];
+
+// ─── RENDER FUNCTIONS ───
+
+function renderNav(items) {
+    return items.map(i => `<li><a href="${i.href}" class="hover:text-pink-600 transition">${i.label}</a></li>`).join("");
+}
+
+function renderMobileNav(items) {
+    return items.map(i => `<li><a href="${i.href}" class="block py-2 px-3 hover:bg-pink-100/50 rounded transition">${i.label}</a></li>`).join("");
+}
+
+function renderReasons(items) {
+    return items.map(r => `
+        <article class="glass-card p-6 text-center group cursor-default">
+            <div class="text-3xl text-pink-500 mb-4 group-hover:scale-110 transition-transform">
+                <i class="${r.icon}"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-pink-800 mb-2">${r.title}</h3>
+            <p class="text-pink-600/80 text-sm">${r.desc}</p>
+        </article>
+    `).join("");
+}
+
+function renderPolaroids(items) {
+    return items.map((img, idx) => `
+        <div class="polaroid">
+            <img src="${img.src}" alt="${img.alt}" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-sm">
+            <p class="text-xs text-pink-500 mt-2 text-center italic">❤️ ${img.alt}</p>
+        </div>
+    `).join("");
+}
+
+function renderTracks(items) {
+    return items.map(t => `
+        <div class="flex items-center justify-between py-2 border-b border-pink-200/50 last:border-0">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-music text-pink-400 text-sm"></i>
+                <div>
+                    <p class="text-sm font-medium text-pink-800">${t.title}</p>
+                    <p class="text-xs text-pink-500">${t.artist}</p>
+                </div>
+            </div>
+            <span class="text-xs text-pink-400">${t.duration}</span>
+        </div>
+    `).join("");
+}
+
+function renderNotes(items) {
+    return items.map((n, idx) => `
+        <div class="love-note glass-card p-6 md:p-8 max-w-2xl mx-auto text-center" data-note="${idx}">
+            <p class="text-lg md:text-xl italic text-pink-700 mb-3">"${n.text}"</p>
+            <p class="text-sm text-pink-500">— ${n.author}</p>
+        </div>
+    `).join("");
+}
+
+// ─── MOUNT ───
+
+document.getElementById("navList").innerHTML = renderNav(navItems);
+document.getElementById("mobileNavList").innerHTML = renderMobileNav(navItems);
+document.getElementById("reasonsGrid").innerHTML = renderReasons(reasons);
+document.getElementById("polaroidGrid").innerHTML = renderPolaroids(galleryImages);
+document.getElementById("playlistTracks").innerHTML = renderTracks(playlistTracks);
+document.getElementById("notesContainer").innerHTML = renderNotes(loveNotes);
+
+// ─── COUNTDOWN ───
+
+const targetDate = new Date("July 26, 2026 00:00:00").getTime();
+let celebrationActive = false;
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        if (!celebrationActive) {
+            celebrationActive = true;
+            document.getElementById("celebration").classList.remove("hidden");
+            document.getElementById("celebration").scrollIntoView({ behavior: "smooth" });
+            launchConfetti(200);
+        }
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ─── FLOATING HEARTS ───
+
+function createHearts() {
+    const container = document.getElementById("heartsContainer");
+    const heartSymbols = ["❤️", "💕", "💗", "🌸", "✨"];
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent = heartSymbols[i % heartSymbols.length];
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.fontSize = (0.8 + Math.random() * 1.2) + "rem";
+        heart.style.animationDuration = (12 + Math.random() * 20) + "s";
+        heart.style.animationDelay = (Math.random() * 15) + "s";
+        container.appendChild(heart);
+    }
+}
+createHearts();
+
+// ─── CONFETTI ───
+
+function launchConfetti(count = 150) {
+    const colors = ["#f8b4c8", "#e8d5f5", "#fce4ec", "#ffd1dc", "#d4a5e0", "#ffc0cb", "#fff0f5"];
+    for (let i = 0; i < count; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = (5 + Math.random() * 10) + "px";
+        piece.style.height = (5 + Math.random() * 10) + "px";
+        piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+        piece.style.animationDuration = (2 + Math.random() * 4) + "s";
+        piece.style.animationDelay = (Math.random() * 3) + "s";
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 8000);
+    }
+}
+
+// ─── OBSERVER FOR LOVE NOTES ANIMATION ───
+
+const noteObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".love-note").forEach(el => noteObserver.observe(el));
+
+// ─── EVENT DELEGATION ───
+
+document.addEventListener("click", function(e) {
+    // Smooth scroll for anchor links
+    const link = e.target.closest("a[href^='#']");
+    if (link) {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+        // Close mobile menu
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+        }
+    }
+
+    // Mobile menu toggle
+    const menuBtn = e.target.closest("#mobileMenuBtn");
+    if (menuBtn) {
+        e.preventDefault();
+        document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    // Confetti button
+    const confettiBtn = e.target.closest("#confettiBtn");
+    if (confettiBtn) {
+        e.preventDefault();
+        launchConfetti(300);
+    }
+
+    // Spotify open button (just a nice placeholder action)
+    const spotifyBtn = e.target.closest("#spotifyOpenBtn");
+    if (spotifyBtn) {
+        e.preventDefault();
+        alert("https://open.spotify.com/playlist/36AtEP0Wszs3zUnQXT1Pc6?si=jisDh7lgQ2eMFXze6s-wLQ&utm_source=copy-link&pi=LqoiYHNeSj2j6");
+    }
+});
+
+// ─── CELEBRATION CHECK ON LOAD ───
+// If countdown already zero when page loads, show celebration
+(function() {
+    const now = new Date().getTime();
+    if (targetDate - now <= 0) {
+        celebrationActive = true;
+        document.getElementById("celebration").classList.remove("hidden");
+        setTimeout(() => launchConfetti(150), 500);
+    }
+})();
+</script>
+</body>
+</html>
